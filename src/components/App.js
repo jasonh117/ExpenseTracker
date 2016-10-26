@@ -28,17 +28,17 @@ class App extends Component {
   }
 
   handleSubmit(data) {
-    const expenses = this.state.expenses
-    expenses.push(data)
+    const expenses = this.state.expenses;
+    expenses.push(data);
     this.setState({
       expenses: expenses
     });
   }
 
   handleDelete(id) {
-    const expenses = this.state.expenses.filter(function(expense) {
-      return expense.id !== id;
-    })
+    const expenses = this.state.expenses;
+    const index = expenses.findIndex(expense => expense.id === id);
+    expenses.splice(index, 1);
     this.setState({
       expenses: expenses
     });

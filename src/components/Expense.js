@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import { removeExpense } from '../actions'
+import { connect } from 'react-redux';
 
 const styles = {
   container: {
@@ -11,16 +13,12 @@ const styles = {
   }
 }
 
-// const deleteExpense() {
-//   this.props.onDelete(this.props.id)
-// }
-
-const Expense = ({ service, renewal, cost, id, onDelete }) => (
+const Expense = ({ service, renewal, cost, id, dispatch }) => (
   <div style={styles.container}>
     <h1>{service}</h1>
     <p>{renewal}</p>
     <p>{cost}</p>
-    <button onClick={() => {onDelete(id)}}>Delete</button>
+    <button onClick={() => dispatch(removeExpense(id))}>Delete</button>
   </div>
 )
 
@@ -30,4 +28,4 @@ Expense.propTypes = {
   cost: PropTypes.string.isRequired
 }
 
-export default Expense
+export default connect()(Expense)

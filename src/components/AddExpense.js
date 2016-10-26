@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react'
+import { addExpense } from '../actions'
+import { connect } from 'react-redux';
 
 const styles = {
   container: {
@@ -43,7 +45,7 @@ class AddExpense extends Component {
     if(this.state.renewal.trim() === "") return
     if(this.state.cost.trim() === "") return
 
-    this.props.onSubmit(this.state)
+    this.props.dispatch(addExpense(this.state))
     this.setState({
       id: this.state.id+1,
       service: "",
@@ -75,4 +77,4 @@ class AddExpense extends Component {
   }
 }
 
-export default AddExpense
+export default connect()(AddExpense)

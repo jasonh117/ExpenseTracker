@@ -11,12 +11,12 @@ const styles = {
   }
 }
 
-const ExpenseList = ({ expenses, onSubmit, onDelete }) => (
+const ExpenseList = ({ expenses }) => (
   <div style={styles.container}>
     {expenses.map(data => {
-      return <Expense {...data} onDelete={onDelete} />
+      return <Expense {...data} />
     })}
-    <AddExpense onSubmit={onSubmit} />
+    <AddExpense />
   </div>
 )
 

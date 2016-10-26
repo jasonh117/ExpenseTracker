@@ -1,5 +1,10 @@
 ExpenseTracker
 ============
+This is a test project bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+Demo
+-----------
+[ExpenseTracker Demo](https://jasonh117.github.io/ExpenseTracker/)
 
 Installation
 -----------
@@ -7,9 +12,6 @@ Installation
 > **Required:**
 
 > - NodeJS
-	> -- brew/npm install
-> - create-react-app
-	> -- npm install -g create-react-app
 
  1. git clone https://github.com/jasonh117/ExpenseTracker
  2. cd ExpenseTracker

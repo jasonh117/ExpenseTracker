@@ -4,11 +4,11 @@ import {
 } from './types'
 
 export const addExpense = (expense) => ({
-  type: 'ADD_EXPENSE',
+  type: ADD_EXPENSE,
   expense
 })
 
 export const removeExpense = (id) => ({
-  type: 'REMOVE_EXPENSE',
+  type: REMOVE_EXPENSE,
   id
 })

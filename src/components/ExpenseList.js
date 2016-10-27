@@ -14,7 +14,7 @@ const styles = {
 const ExpenseList = ({ expenses }) => (
   <div style={styles.container}>
     {expenses.map(data => {
-      return <Expense {...data} />
+      return <Expense key={data.id} expense={data} />
     })}
     <AddExpense />
   </div>
@@ -22,11 +22,11 @@ const ExpenseList = ({ expenses }) => (
 
 ExpenseList.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     service: PropTypes.string.isRequired,
     renewal: PropTypes.string.isRequired,
     cost: PropTypes.string.isRequired
   }).isRequired).isRequired
-  // onTodoClick: PropTypes.func.isRequired
 }
 
 export default ExpenseList

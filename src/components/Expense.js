@@ -13,19 +13,22 @@ const styles = {
   }
 }
 
-const Expense = ({ service, renewal, cost, id, dispatch }) => (
+const Expense = ({ expense, dispatch }) => (
   <div style={styles.container}>
-    <h1>{service}</h1>
-    <p>{renewal}</p>
-    <p>{cost}</p>
-    <button onClick={() => dispatch(removeExpense(id))}>Delete</button>
+    <h1>{expense.service}</h1>
+    <p>{expense.renewal}</p>
+    <p>{expense.cost}</p>
+    <button onClick={() => dispatch(removeExpense(expense.id))}>Delete</button>
   </div>
 )
 
 Expense.propTypes = {
-  service: PropTypes.string.isRequired,
-  renewal: PropTypes.string.isRequired,
-  cost: PropTypes.string.isRequired
+  expense: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    service: PropTypes.string.isRequired,
+    renewal: PropTypes.string.isRequired,
+    cost: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default connect()(Expense)

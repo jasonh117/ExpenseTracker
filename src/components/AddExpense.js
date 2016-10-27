@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
 import { addExpense } from '../actions'
 import { connect } from 'react-redux';
 
@@ -27,37 +27,36 @@ const styles = {
   }
 }
 
+const initState = {
+  service: "",
+  renewal: "",
+  cost: ""
+}
+
 class AddExpense extends Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      id: 2,
-      service: "",
-      renewal: "",
-      cost: ""
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.onKeyPress = this.onKeyPress.bind(this)
+    super(props);
+    this.state = initState;
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
   }
 
   handleSubmit() {
-    if(this.state.service.trim() === "") return
-    if(this.state.renewal.trim() === "") return
-    if(this.state.cost.trim() === "") return
+    if(this.state.service.trim() === "") return;
+    if(this.state.renewal.trim() === "") return;
+    if(this.state.cost.trim() === "") return;
 
-    this.props.dispatch(addExpense(this.state))
-    this.setState({
-      id: this.state.id+1,
-      service: "",
-      renewal: "",
-      cost: ""
-    })
+    const expense = Object.assign({}, this.state, {
+      id: Date.now()
+    });
+    this.props.dispatch(addExpense(expense));
+    this.setState(initState);
   }
 
   handleInput(name, e) {
-    var change = {}
-    change[name]= e.target.value
-    this.setState(change)
+    this.setState({
+      [name]: e.target.value
+    })
   }
 
   onKeyPress(e) {
